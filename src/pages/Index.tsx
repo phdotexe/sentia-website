@@ -1,12 +1,176 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Download, Star, Users, BookOpen, Zap } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-white">
+      <Navigation />
+      
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                Master Any Subject with{" "}
+                <span className="text-blue-600">Sentia</span>
+              </h1>
+              <p className="text-xl text-gray-600 mb-8">
+                The ultimate quiz bank app that runs locally on your computer. Study efficiently with spaced repetition, custom quizzes, and powerful analytics.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
+                  <a href="https://github.com/your-username/sentia/releases" target="_blank" rel="noopener noreferrer">
+                    <Download className="mr-2 h-5 w-5" />
+                    Download for Windows - Free
+                  </a>
+                </Button>
+                <Button size="lg" variant="outline" asChild>
+                  <a href="https://apps.apple.com/app/sentia" target="_blank" rel="noopener noreferrer">
+                    Download for Mac - $9.99
+                  </a>
+                </Button>
+              </div>
+              <div className="flex items-center space-x-6 text-sm text-gray-500">
+                <div className="flex items-center">
+                  <Star className="h-4 w-4 text-yellow-400 mr-1" />
+                  <span>4.8/5 rating</span>
+                </div>
+                <div className="flex items-center">
+                  <Users className="h-4 w-4 mr-1" />
+                  <span>10,000+ users</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Promotional Video Section */}
+            <div className="bg-white rounded-lg shadow-xl overflow-hidden">
+              <div className="aspect-video bg-gray-100 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-600">Watch Sentia in Action</p>
+                  <p className="text-sm text-gray-400 mt-2">Promotional video coming soon</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Why Choose Sentia?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Designed for students, professionals, and lifelong learners who want to study more effectively
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Zap className="h-6 w-6 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Lightning Fast</h3>
+                <p className="text-gray-600">
+                  Runs locally on your computer for instant access and blazing fast performance
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="h-6 w-6 text-green-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Smart Learning</h3>
+                <p className="text-gray-600">
+                  Advanced spaced repetition algorithms to optimize your learning and retention
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-6 w-6 text-purple-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Privacy Focused</h3>
+                <p className="text-gray-600">
+                  Your data stays on your device. No cloud storage required, complete privacy guaranteed
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Pricing */}
+      <section className="bg-gray-50 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Available on Your Platform
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Card className="p-8 text-center">
+              <CardContent className="pt-6">
+                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 12V6.75l9-5.25 9 5.25V12l-9 5.25L3 12z"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-2">Windows</h3>
+                <div className="text-3xl font-bold text-green-600 mb-4">FREE</div>
+                <p className="text-gray-600 mb-6">
+                  Full featured version available for download from GitHub
+                </p>
+                <Button className="w-full" asChild>
+                  <a href="https://github.com/your-username/sentia/releases" target="_blank" rel="noopener noreferrer">
+                    Download for Windows
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="p-8 text-center">
+              <CardContent className="pt-6">
+                <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.987 11.987s11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.232 20.116c-3.79-1.146-6.077-4.116-5.816-7.527l6.91 6.91c-.536.433-1.13.783-1.094.617z"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-2">macOS</h3>
+                <div className="text-3xl font-bold text-blue-600 mb-4">$9.99</div>
+                <p className="text-gray-600 mb-6">
+                  Available on the Mac App Store with automatic updates
+                </p>
+                <Button className="w-full" variant="outline" asChild>
+                  <a href="https://apps.apple.com/app/sentia" target="_blank" rel="noopener noreferrer">
+                    Get on App Store
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 };
