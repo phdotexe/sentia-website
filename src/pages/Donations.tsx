@@ -1,9 +1,8 @@
-
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart, Coffee, Server, Code, Users } from "lucide-react";
+import { Heart, Coffee, Server, Code, Users, Star } from "lucide-react";
 
 const Donations = () => {
   const donationTiers = [
