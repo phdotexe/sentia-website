@@ -3,8 +3,22 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Download, Star, Users, BookOpen, Zap } from "lucide-react";
+import { useEffect } from "react";
 
 const Index = () => {
+  useEffect(() => {
+    const cards = document.querySelectorAll('.feature-fade-in');
+    const observer = new window.IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -63,8 +77,10 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 bg-gradient-to-b from-white via-blue-50 to-indigo-50">
+        {/* Divider */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-blue-400/20 via-indigo-400/30 to-fuchsia-400/20 rounded-full blur-sm" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Why Choose Sentia?
@@ -73,12 +89,11 @@ const Index = () => {
               Designed for students, professionals, and lifelong learners who want to study more effectively
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+            <Card className="p-6 text-center hover:shadow-2xl hover:scale-[1.04] transition-all duration-300 feature-fade-in">
               <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Zap className="h-6 w-6 text-blue-600" />
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-400 via-blue-300 to-indigo-300 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <Zap className="h-7 w-7 text-white drop-shadow" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Lightning Fast</h3>
                 <p className="text-gray-600">
@@ -86,11 +101,10 @@ const Index = () => {
                 </p>
               </CardContent>
             </Card>
-
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+            <Card className="p-6 text-center hover:shadow-2xl hover:scale-[1.04] transition-all duration-300 feature-fade-in" style={{animationDelay: '0.15s'}}>
               <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="h-6 w-6 text-green-600" />
+                <div className="w-14 h-14 bg-gradient-to-br from-green-400 via-green-300 to-blue-200 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <BookOpen className="h-7 w-7 text-white drop-shadow" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Smart Learning</h3>
                 <p className="text-gray-600">
@@ -98,11 +112,10 @@ const Index = () => {
                 </p>
               </CardContent>
             </Card>
-
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+            <Card className="p-6 text-center hover:shadow-2xl hover:scale-[1.04] transition-all duration-300 feature-fade-in" style={{animationDelay: '0.3s'}}>
               <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-6 w-6 text-purple-600" />
+                <div className="w-14 h-14 bg-gradient-to-br from-fuchsia-400 via-purple-400 to-indigo-300 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <Users className="h-7 w-7 text-white drop-shadow" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Privacy Focused</h3>
                 <p className="text-gray-600">
