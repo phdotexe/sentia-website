@@ -128,48 +128,53 @@ const Index = () => {
       </section>
 
       {/* Platform Pricing */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-white overflow-hidden">
+        {/* Decorative Divider */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-blue-400/20 via-green-400/30 to-fuchsia-400/20 rounded-full blur-sm" />
+        {/* Floating Orbs */}
+        <div className="absolute w-72 h-72 bg-blue-300 opacity-20 rounded-full blur-3xl left-[-5rem] top-[-5rem]" />
+        <div className="absolute w-56 h-56 bg-green-300 opacity-20 rounded-full blur-2xl right-[-4rem] bottom-[-4rem]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Available on Your Platform
             </h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">Choose your platform and start mastering your studies today.</p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="p-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            {/* Windows Card */}
+            <Card className="relative p-10 text-center bg-white/60 backdrop-blur-lg rounded-3xl shadow-xl border border-blue-100 hover:scale-[1.03] hover:shadow-2xl transition-all duration-300">
+              <span className="absolute top-6 left-6 bg-gradient-to-r from-green-400 to-blue-400 text-white text-xs font-bold px-4 py-1 rounded-full shadow-md">Best Value</span>
               <CardContent className="pt-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M3 12V6.75l9-5.25 9 5.25V12l-9 5.25L3 12z"/>
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 via-blue-400 to-green-300 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  {/* Windows Icon */}
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M1.5 5.5l9-1.5v8h-9v-6.5zm9 9v8l-9-1.5v-6.5h9zm2 8l10.5-1.75v-6.25h-10.5v8zm10.5-17.75l-10.5-1.75v8h10.5v-6.25z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-2">Windows</h3>
-                <div className="text-3xl font-bold text-green-600 mb-4">FREE</div>
-                <p className="text-gray-600 mb-6">
-                  Full featured version available for download from GitHub
-                </p>
-                <Button className="w-full" asChild>
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">Windows</h3>
+                <div className="text-4xl font-extrabold text-green-500 mb-2">FREE</div>
+                <p className="text-gray-700 mb-6 text-base">Full featured version available for download from GitHub</p>
+                <Button className="w-full bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold shadow-md hover:scale-105 hover:shadow-lg transition-all duration-200" asChild>
                   <a href="https://github.com/your-username/sentia/releases" target="_blank" rel="noopener noreferrer">
                     Download for Windows
                   </a>
                 </Button>
               </CardContent>
             </Card>
-
-            <Card className="p-8 text-center">
+            {/* macOS Card */}
+            <Card className="relative p-10 text-center bg-white/60 backdrop-blur-lg rounded-3xl shadow-xl border border-indigo-100 hover:scale-[1.03] hover:shadow-2xl transition-all duration-300">
               <CardContent className="pt-6">
-                <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 via-blue-400 to-gray-300 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  {/* macOS Icon */}
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.987 11.987s11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.232 20.116c-3.79-1.146-6.077-4.116-5.816-7.527l6.91 6.91c-.536.433-1.13.783-1.094.617z"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-2">macOS</h3>
-                <div className="text-3xl font-bold text-blue-600 mb-4">$9.99</div>
-                <p className="text-gray-600 mb-6">
-                  Available on the Mac App Store with automatic updates
-                </p>
-                <Button className="w-full" variant="outline" asChild>
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">macOS</h3>
+                <div className="text-4xl font-extrabold text-blue-500 mb-2">$9.99</div>
+                <p className="text-gray-700 mb-6 text-base">Available on the Mac App Store with automatic updates</p>
+                <Button className="w-full bg-gradient-to-r from-blue-400 to-indigo-500 text-white font-semibold shadow-md hover:scale-105 hover:shadow-lg transition-all duration-200" variant="outline" asChild>
                   <a href="https://apps.apple.com/app/sentia" target="_blank" rel="noopener noreferrer">
                     Get on App Store
                   </a>
