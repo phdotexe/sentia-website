@@ -40,3 +40,41 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Floating Orbs Animations */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.03); }
+}
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.01); }
+}
+@keyframes float-mockup {
+  0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); }
+  50% { transform: translateY(-16px) scale(1.01); box-shadow: 0 16px 48px 0 rgba(31, 38, 135, 0.25); }
+}
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+.animate-float-medium {
+  animation: float-medium 6s ease-in-out infinite;
+}
+.animate-float-fast {
+  animation: float-fast 4s ease-in-out infinite;
+}
+.animate-float-mockup {
+  animation: float-mockup 7s ease-in-out infinite;
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2.5s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+}

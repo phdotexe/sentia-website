@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -9,35 +8,40 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-20 min-h-[600px] flex items-center" style={{background: 'linear-gradient(120deg, #3b82f6 0%, #6366f1 50%, #a21caf 100%)'}}>
+        {/* Animated Orbs */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+          <div className="absolute bg-blue-400 opacity-30 rounded-full blur-3xl w-80 h-80 left-[-6rem] top-[-6rem] animate-float-slow" />
+          <div className="absolute bg-indigo-400 opacity-20 rounded-full blur-2xl w-60 h-60 right-[-4rem] top-32 animate-float-medium" />
+          <div className="absolute bg-fuchsia-400 opacity-20 rounded-full blur-2xl w-40 h-40 left-1/2 bottom-[-3rem] animate-float-fast" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                Master Any Subject with{" "}
-                <span className="text-blue-600">Sentia</span>
+              <h1 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-fuchsia-200 bg-clip-text text-transparent drop-shadow-lg">
+                Master Any Subject with <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-fuchsia-500 bg-clip-text text-transparent">Sentia</span>
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-white/80 mb-8 drop-shadow">
                 The ultimate quiz bank app that runs locally on your computer. Study efficiently with spaced repetition, custom quizzes, and powerful analytics.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
+                <Button size="lg" className="bg-white/90 text-blue-700 hover:bg-white shadow-lg animate-bounce-slow" asChild>
                   <a href="https://github.com/your-username/sentia/releases" target="_blank" rel="noopener noreferrer">
                     <Download className="mr-2 h-5 w-5" />
                     Download for Windows - Free
                   </a>
                 </Button>
-                <Button size="lg" variant="outline" asChild>
+                <Button size="lg" variant="outline" className="backdrop-blur bg-white/30 border-white/40 text-white hover:bg-white/40 hover:text-blue-700 shadow-md" asChild>
                   <a href="https://apps.apple.com/app/sentia" target="_blank" rel="noopener noreferrer">
                     Download for Mac - $9.99
                   </a>
                 </Button>
               </div>
-              <div className="flex items-center space-x-6 text-sm text-gray-500">
+              <div className="flex items-center space-x-6 text-sm text-white/80">
                 <div className="flex items-center">
-                  <Star className="h-4 w-4 text-yellow-400 mr-1" />
+                  <Star className="h-4 w-4 text-yellow-300 mr-1" />
                   <span>4.8/5 rating</span>
                 </div>
                 <div className="flex items-center">
@@ -46,23 +50,16 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            
-            {/* Promotional Video Section */}
-            <div className="bg-white rounded-lg shadow-xl overflow-hidden">
-              <div className="aspect-video bg-gray-100 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <p className="text-gray-600">Watch Sentia in Action</p>
-                  <p className="text-sm text-gray-400 mt-2">Promotional video coming soon</p>
-                </div>
+            {/* Product Mockup Placeholder */}
+            <div className="flex justify-center items-center">
+              <div className="relative w-[440px] h-[300px] bg-white/20 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/30 flex items-center justify-center animate-float-mockup">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="App Mockup" className="w-full h-full object-cover rounded-2xl opacity-95" />
+                <div className="absolute -inset-1 rounded-3xl border-2 border-white/10 pointer-events-none" />
               </div>
             </div>
           </div>
         </div>
+        {/* Animations keyframes (add to global CSS) */}
       </section>
 
       {/* Features Section */}
@@ -76,7 +73,7 @@ const Index = () => {
               Designed for students, professionals, and lifelong learners who want to study more effectively
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="p-6 text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
@@ -89,7 +86,7 @@ const Index = () => {
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="p-6 text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
@@ -101,7 +98,7 @@ const Index = () => {
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="p-6 text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
@@ -125,7 +122,7 @@ const Index = () => {
               Available on Your Platform
             </h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card className="p-8 text-center">
               <CardContent className="pt-6">
@@ -146,7 +143,7 @@ const Index = () => {
                 </Button>
               </CardContent>
             </Card>
-            
+
             <Card className="p-8 text-center">
               <CardContent className="pt-6">
                 <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-6">
