@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Typewriter from 'typewriter-effect';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Download, Star, Users, BookOpen, Zap } from "lucide-react";
@@ -34,10 +35,25 @@ const Index = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-fuchsia-200 bg-clip-text text-transparent drop-shadow-lg">
-                Master Any Subject with <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-fuchsia-500 bg-clip-text text-transparent">Sentia</span>
+              <h1 className="text-4xl md:text-6xl font-heading font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-fuchsia-200 bg-clip-text text-transparent drop-shadow-lg">
+                  <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-fuchsia-500 bg-clip-text text-transparent"> Choose Sentia</span>
+                  <span className="text-4xl md:text-5xl bg-gradient-to-r from-white via-blue-200 to-fuchsia-200">
+                  <Typewriter
+                    options={{
+                      strings: [
+                        'to master any subject',
+                        'to crush your exams',
+                        'to learn faster than ever',
+                      ],
+                      autoStart: true,
+                      loop: true,
+                      delay: 60,
+                      deleteSpeed: 30,
+                    }}
+                  />
+                </span>{' '}
               </h1>
-              <p className="text-xl text-white/80 mb-8 drop-shadow">
+              <p className="text-xl text-white/80 font-body mb-8 drop-shadow">
                 The ultimate quiz bank app that runs locally on your computer. Study efficiently with spaced repetition, custom quizzes, and powerful analytics.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
