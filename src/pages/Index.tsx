@@ -25,7 +25,7 @@ const Index = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 min-h-[600px] flex items-center" style={{background: 'linear-gradient(120deg, #3b82f6 0%, #6366f1 50%, #a21caf 100%)'}}>
+      <section className="relative overflow-hidden py-20 min-h-[600px] flex items-center overflow-hidden" style={{background: 'linear-gradient(120deg, #0d0d0d 0%, #1b4965 50%, #111111 100%)'}}>
         {/* Animated Orbs */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
           <div className="absolute bg-blue-400 opacity-30 rounded-full blur-3xl w-80 h-80 left-[-6rem] top-[-6rem] animate-float-slow" />
@@ -54,7 +54,7 @@ const Index = () => {
                 </span>{' '}
               </h1>
               <p className="text-xl text-white/80 font-body mb-8 drop-shadow">
-                The ultimate quiz bank app that runs locally on your computer. Study efficiently with spaced repetition, custom quizzes, and powerful analytics.
+                The ultimate offline quiz bank. Study smarter with spaced repetition, custom quizzes, and deep analytics.              
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Button size="lg" className="bg-white/90 text-blue-700 hover:bg-white shadow-lg animate-bounce-slow" asChild>
@@ -93,7 +93,7 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="relative py-20 bg-gradient-to-b from-white via-blue-50 to-indigo-50">
+      <section className="relative py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-white overflow-hidden" >
         {/* Divider */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-blue-400/20 via-indigo-400/30 to-fuchsia-400/20 rounded-full blur-sm" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
