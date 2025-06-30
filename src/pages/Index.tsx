@@ -1,44 +1,113 @@
-
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Download, Star, Users, BookOpen, Zap } from "lucide-react";
+import { Download, Star, Users, BookOpen, Zap, Play } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Index = () => {
+  const [currentText, setCurrentText] = useState(0);
+  const [showText, setShowText] = useState(true);
+
+  const heroTexts = [
+    "Master Any Subject",
+    "Study Smarter, Not Harder", 
+    "Your Personal Quiz Engine",
+    "Unlock Your Potential"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowText(false);
+      setTimeout(() => {
+        setCurrentText((prev) => (prev + 1) % heroTexts.length);
+        setShowText(true);
+      }, 300);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Hero Section with Video Background */}
+      <section className="relative pt-20 pb-20 px-4 min-h-screen overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="w-full h-full bg-gradient-to-br from-blue-900/90 via-purple-900/90 to-pink-900/90 flex items-center justify-center">
+            {/* Placeholder for video - in production, replace with actual video */}
+            <div className="relative w-full h-full bg-gradient-to-br from-blue-600/20 to-purple-600/20 animate-pulse">
+              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjIiLz48L2c+PC9zdmc+')] opacity-30"></div>
+              
+              {/* Animated particles */}
+              <div className="absolute inset-0">
+                {[...Array(20)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-2 h-2 bg-white/20 rounded-full animate-float"
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      animationDelay: `${Math.random() * 3}s`,
+                      animationDuration: `${3 + Math.random() * 2}s`
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Mock video content */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-white/60">
+                  <Play className="w-16 h-16 mx-auto mb-4 animate-pulse" />
+                  <p className="text-lg font-semibold">Sentia Promotional Video</p>
+                  <p className="text-sm mt-2">Student studying happily with Sentia</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dynamic Text Overlay */}
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
             <div className="animate-fade-in">
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 animate-scale-in">
-                Your questions. Your drive. Your {" "}
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-pulse">
+              {/* Dynamic rotating text */}
+              <div className="mb-6 h-20">
+                <h1 className={`text-4xl md:text-6xl font-bold text-white mb-2 transition-all duration-500 transform ${
+                  showText ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95'
+                }`}>
+                  {heroTexts[currentText]}
+                </h1>
+              </div>
+              
+              <h2 className="text-2xl md:text-3xl font-bold text-white/90 mb-6 animate-scale-in">
+                with {" "}
+                <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent animate-glow">
                   Sentia
                 </span>
-              </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              </h2>
+              
+              <p className="text-xl text-white/80 mb-8 animate-fade-in backdrop-blur-sm bg-black/20 p-4 rounded-xl" style={{ animationDelay: '0.2s' }}>
                 The ultimate quiz bank app that runs locally on your computer. Study efficiently with spaced repetition, custom quizzes, and powerful analytics.
               </p>
+              
               <div className="flex flex-col sm:flex-row gap-4 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-xl" 
+                  className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 hover:scale-105 transform transition-all duration-300 shadow-2xl hover:shadow-cyan-500/25 text-lg font-bold animate-glow" 
                   asChild
                 >
                   <a href="https://github.com/your-username/sentia/releases" target="_blank" rel="noopener noreferrer">
-                    <Download className="mr-2 h-5 w-5" />
-                    Download for Windows - Free
+                    <Download className="mr-2 h-6 w-6" />
+                    Download for Windows - FREE
                   </a>
                 </Button>
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="hover:scale-105 transform transition-all duration-300 border-2 border-purple-500 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900" 
+                  className="hover:scale-105 transform transition-all duration-300 border-2 border-purple-400 text-white bg-black/20 backdrop-blur-sm hover:bg-purple-500/20 shadow-xl font-bold" 
                   asChild
                 >
                   <a href="https://apps.apple.com/app/sentia" target="_blank" rel="noopener noreferrer">
@@ -46,40 +115,34 @@ const Index = () => {
                   </a>
                 </Button>
               </div>
-              <div className="flex items-center space-x-6 text-sm text-gray-500 dark:text-gray-400 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              
+              <div className="flex items-center space-x-6 text-sm text-white/70 animate-fade-in backdrop-blur-sm bg-black/20 p-3 rounded-xl inline-flex" style={{ animationDelay: '0.6s' }}>
                 <div className="flex items-center hover:scale-105 transform transition-all duration-300">
                   <Star className="h-4 w-4 text-yellow-400 mr-1" />
-                  <span>4.8/5 rating</span>
+                  <span className="font-semibold">4.8/5 rating</span>
                 </div>
                 <div className="flex items-center hover:scale-105 transform transition-all duration-300">
                   <Users className="h-4 w-4 mr-1" />
-                  <span>10,000+ users</span>
+                  <span className="font-semibold">10,000+ users</span>
                 </div>
               </div>
             </div>
             
-            {/* Promotional Video Section */}
-            <div className="animate-fade-in" style={{ animationDelay: '0.8s' }}>
-              <Card className="overflow-hidden shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-                <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 hover:scale-110 transform transition-all duration-300 shadow-lg">
-                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <p className="text-gray-700 dark:text-gray-300 font-semibold">Watch Sentia in Action</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Promotional video coming soon</p>
-                  </div>
-                </div>
-              </Card>
-            </div>
+            {/* Right side - empty to let video background show */}
+            <div className="hidden lg:block"></div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-black/10 dark:bg-white/5 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-in">

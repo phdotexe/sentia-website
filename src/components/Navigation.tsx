@@ -21,9 +21,9 @@ const Navigation = () => {
   }
 
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 animate-fade-in">
-      <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-2xl px-6 py-3">
-        <div className="flex items-center space-x-8">
+    <nav className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 animate-fade-in">
+      <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-2xl px-6 py-3 max-w-6xl w-full">
+        <div className="flex items-center justify-between">
           <Link 
             to="/" 
             className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transform transition-all duration-300"
@@ -31,7 +31,7 @@ const Navigation = () => {
             Sentia
           </Link>
           
-          <div className="flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-6">
             {[
               { path: '/', label: 'Home' },
               { path: '/about', label: 'About' },
