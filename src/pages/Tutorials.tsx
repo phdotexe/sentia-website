@@ -1,270 +1,260 @@
 
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Play, Clock, User } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ArrowDown, ArrowUp, ChevronRight, ChevronLeft, BookOpen, Target, Zap } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Tutorials = () => {
-  const tutorials = [
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  const tutorialSteps = [
     {
-      title: "Getting Started with Sentia",
-      description: "Learn the basics of creating your first quiz bank and starting your study journey",
-      duration: "8 min",
-      level: "Beginner",
-      videoId: "dQw4w9WgXcQ", // Replace with actual YouTube video IDs
-      thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+      id: 1,
+      title: "Welcome to Sentia",
+      content: "Get ready to revolutionize your learning experience with Sentia's powerful quiz bank system.",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop",
+      icon: Target,
+      color: "from-blue-500 to-cyan-500"
     },
     {
-      title: "Creating Effective Quiz Questions",
-      description: "Best practices for writing questions that enhance learning and retention",
-      duration: "12 min",
-      level: "Beginner",
-      videoId: "dQw4w9WgXcQ",
-      thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+      id: 2,
+      title: "Installation & Setup",
+      content: "Download and install Sentia on your device. The app runs completely offline for maximum privacy and speed.",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop",
+      icon: BookOpen,
+      color: "from-green-500 to-emerald-500"
     },
     {
+      id: 3,
+      title: "Creating Your First Quiz Bank",
+      content: "Learn how to create your first quiz bank with custom questions, categories, and difficulty levels.",
+      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=600&h=400&fit=crop",
+      icon: Zap,
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      id: 4,
       title: "Mastering Spaced Repetition",
-      description: "Understanding and optimizing the spaced repetition algorithm for maximum effectiveness",
-      duration: "15 min",
-      level: "Intermediate",
-      videoId: "dQw4w9WgXcQ",
-      thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+      content: "Understand how Sentia's spaced repetition algorithm works to optimize your learning and retention.",
+      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop",
+      icon: Target,
+      color: "from-orange-500 to-red-500"
     },
     {
-      title: "Advanced Study Strategies",
-      description: "Combine Sentia with other learning techniques for optimal results",
-      duration: "18 min",
-      level: "Advanced",
-      videoId: "dQw4w9WgXcQ",
-      thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+      id: 5,
+      title: "Advanced Features",
+      content: "Explore advanced features like analytics, custom scheduling, and importing external question banks.",
+      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=600&h=400&fit=crop",
+      icon: BookOpen,
+      color: "from-indigo-500 to-purple-500"
     },
     {
-      title: "Importing and Organizing Content",
-      description: "Efficiently manage large question banks and organize your study materials",
-      duration: "10 min",
-      level: "Intermediate",
-      videoId: "dQw4w9WgXcQ",
-      thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
-    },
-    {
-      title: "Analytics and Progress Tracking",
-      description: "Use Sentia's analytics to identify weak areas and track your improvement",
-      duration: "14 min",
-      level: "Intermediate",
-      videoId: "dQw4w9WgXcQ",
-      thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+      id: 6,
+      title: "Study Strategies",
+      content: "Learn proven study strategies and how to combine them with Sentia for maximum learning efficiency.",
+      image: "https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?w=600&h=400&fit=crop",
+      icon: Zap,
+      color: "from-teal-500 to-blue-500"
     }
   ];
 
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case "Beginner": return "bg-green-100 text-green-800";
-      case "Intermediate": return "bg-yellow-100 text-yellow-800";
-      case "Advanced": return "bg-red-100 text-red-800";
-      default: return "bg-gray-100 text-gray-800";
+  const nextStep = () => {
+    if (currentStep < tutorialSteps.length - 1) {
+      setIsScrolling(true);
+      setTimeout(() => {
+        setCurrentStep(currentStep + 1);
+        setIsScrolling(false);
+      }, 300);
     }
   };
 
+  const prevStep = () => {
+    if (currentStep > 0) {
+      setIsScrolling(true);
+      setTimeout(() => {
+        setCurrentStep(currentStep - 1);
+        setIsScrolling(false);
+      }, 300);
+    }
+  };
+
+  const goToStep = (stepIndex: number) => {
+    if (stepIndex !== currentStep) {
+      setIsScrolling(true);
+      setTimeout(() => {
+        setCurrentStep(stepIndex);
+        setIsScrolling(false);
+      }, 300);
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+        nextStep();
+      } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+        prevStep();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentStep]);
+
+  const currentTutorial = tutorialSteps[currentStep];
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <Navigation />
       
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Tutorials & Guides
+      <section className="pt-32 pb-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in">
+              Interactive Tutorials
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Master Sentia with our comprehensive video tutorials and written guides. 
-              Learn at your own pace with step-by-step instructions.
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              Master Sentia with our step-by-step interactive guide. Use arrow keys or buttons to navigate.
             </p>
           </div>
 
-          {/* Featured Tutorial */}
-          <div className="mb-16">
-            <Card className="overflow-hidden">
+          {/* Progress Bar */}
+          <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                Step {currentStep + 1} of {tutorialSteps.length}
+              </span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                {Math.round(((currentStep + 1) / tutorialSteps.length) * 100)}% Complete
+              </span>
+            </div>
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+              <div 
+                className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500 ease-out"
+                style={{ width: `${((currentStep + 1) / tutorialSteps.length) * 100}%` }}
+              ></div>
+            </div>
+          </div>
+
+          {/* Step Navigation */}
+          <div className="flex justify-center mb-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <div className="flex space-x-2">
+              {tutorialSteps.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToStep(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 ${
+                    index === currentStep 
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg' 
+                      : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Main Tutorial Content */}
+          <div className={`transition-all duration-500 ${isScrolling ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'}`}>
+            <Card className="overflow-hidden bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-2xl animate-fade-in" style={{ animationDelay: '0.8s' }}>
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="relative">
                   <img 
-                    src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" 
-                    alt="Featured tutorial"
+                    src={currentTutorial.image} 
+                    alt={currentTutorial.title}
                     className="w-full h-64 lg:h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                    <Button
-                      size="lg"
-                      className="bg-white text-black hover:bg-gray-100"
-                      asChild
-                    >
-                      <a 
-                        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                      >
-                        <Play className="mr-2 h-5 w-5" />
-                        Watch Now
-                      </a>
-                    </Button>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${currentTutorial.color} opacity-20`}></div>
+                  <div className="absolute top-4 left-4">
+                    <div className={`w-12 h-12 bg-gradient-to-r ${currentTutorial.color} rounded-xl flex items-center justify-center shadow-lg`}>
+                      <currentTutorial.icon className="h-6 w-6 text-white" />
+                    </div>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col justify-center">
-                  <span className="text-sm font-medium text-blue-600 mb-2">FEATURED TUTORIAL</span>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                    Complete Sentia Masterclass
+                
+                <div className="p-8 lg:p-12 flex flex-col justify-center">
+                  <Badge className={`bg-gradient-to-r ${currentTutorial.color} text-white w-fit mb-4`}>
+                    Step {currentStep + 1}
+                  </Badge>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                    {currentTutorial.title}
                   </h2>
-                  <p className="text-gray-600 mb-6">
-                    A comprehensive 45-minute tutorial covering everything from basic setup 
-                    to advanced study strategies. Perfect for both new and experienced users.
+                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                    {currentTutorial.content}
                   </p>
-                  <div className="flex items-center space-x-4 text-sm text-gray-500">
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 mr-1" />
-                      45 min
+                  
+                  <div className="flex items-center justify-between">
+                    <Button
+                      onClick={prevStep}
+                      disabled={currentStep === 0}
+                      variant="outline"
+                      size="lg"
+                      className="hover:scale-105 transform transition-all duration-300"
+                    >
+                      <ChevronLeft className="mr-2 h-5 w-5" />
+                      Previous
+                    </Button>
+                    
+                    <div className="flex flex-col items-center space-y-2">
+                      <span className="text-sm text-gray-500 dark:text-gray-400">Use arrow keys to navigate</span>
+                      <div className="flex space-x-2">
+                        <ArrowUp className="h-4 w-4 text-gray-400" />
+                        <ArrowDown className="h-4 w-4 text-gray-400" />
+                      </div>
                     </div>
-                    <div className="flex items-center">
-                      <User className="h-4 w-4 mr-1" />
-                      All Levels
-                    </div>
+                    
+                    <Button
+                      onClick={nextStep}
+                      disabled={currentStep === tutorialSteps.length - 1}
+                      size="lg"
+                      className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 hover:scale-105 transform transition-all duration-300"
+                    >
+                      Next
+                      <ChevronRight className="ml-2 h-5 w-5" />
+                    </Button>
                   </div>
                 </div>
               </div>
             </Card>
           </div>
 
-          {/* Tutorial Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {tutorials.map((tutorial, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="relative">
-                  <img 
-                    src={tutorial.thumbnail} 
-                    alt={tutorial.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-opacity flex items-center justify-center opacity-0 hover:opacity-100">
-                    <Button
-                      size="sm"
-                      className="bg-white text-black hover:bg-gray-100"
-                      asChild
-                    >
-                      <a 
-                        href={`https://www.youtube.com/watch?v=${tutorial.videoId}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                      >
-                        <Play className="mr-2 h-4 w-4" />
-                        Play
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className={`px-2 py-1 text-xs font-medium rounded-full ${getLevelColor(tutorial.level)}`}>
-                      {tutorial.level}
-                    </span>
-                    <div className="flex items-center text-sm text-gray-500">
-                      <Clock className="h-3 w-3 mr-1" />
-                      {tutorial.duration}
-                    </div>
-                  </div>
-                  <CardTitle className="text-lg">{tutorial.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 text-sm">{tutorial.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Written Guides Section */}
-          <div className="mt-20">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Written Guides
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Card className="p-6">
-                <CardHeader>
-                  <CardTitle>Study Methodology Guide</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Learn the science behind effective studying and how to apply these principles with Sentia.
-                  </p>
-                  <Button variant="outline" size="sm">
-                    Read Guide
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="p-6">
-                <CardHeader>
-                  <CardTitle>Question Writing Best Practices</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Comprehensive guide on creating effective quiz questions that promote deep learning.
-                  </p>
-                  <Button variant="outline" size="sm">
-                    Read Guide
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="p-6">
-                <CardHeader>
-                  <CardTitle>Customizing Spaced Repetition</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Advanced techniques for fine-tuning the spaced repetition algorithm to match your learning style.
-                  </p>
-                  <Button variant="outline" size="sm">
-                    Read Guide
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="p-6">
-                <CardHeader>
-                  <CardTitle>Data Import & Export</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">
-                    Step-by-step instructions for importing existing question banks and exporting your data.
-                  </p>
-                  <Button variant="outline" size="sm">
-                    Read Guide
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* YouTube Channel CTA */}
-          <div className="mt-20 bg-gradient-to-r from-red-50 to-red-100 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Subscribe to Our YouTube Channel
-            </h2>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Get notified when we release new tutorials, tips, and study strategies. 
-              Join thousands of learners improving their study habits with Sentia.
-            </p>
-            <Button 
-              size="lg" 
-              className="bg-red-600 hover:bg-red-700"
-              asChild
-            >
-              <a 
-                href="https://www.youtube.com/channel/your-channel-id" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                Subscribe on YouTube
-              </a>
-            </Button>
+          {/* Quick Actions */}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: '1s' }}>
+            <Card className="p-6 text-center hover:shadow-xl transform hover:scale-105 transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+              <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Quick Start Guide</h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">Get up and running in 5 minutes</p>
+              <Button size="sm" variant="outline" className="hover:scale-105 transform transition-all duration-300">
+                Start Guide
+              </Button>
+            </Card>
+            
+            <Card className="p-6 text-center hover:shadow-xl transform hover:scale-105 transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Zap className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Video Tutorials</h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">Watch detailed video guides</p>
+              <Button size="sm" variant="outline" className="hover:scale-105 transform transition-all duration-300">
+                Watch Videos
+              </Button>
+            </Card>
+            
+            <Card className="p-6 text-center hover:shadow-xl transform hover:scale-105 transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Target className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Advanced Tips</h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">Pro tips for power users</p>
+              <Button size="sm" variant="outline" className="hover:scale-105 transform transition-all duration-300">
+                Learn More
+              </Button>
+            </Card>
           </div>
         </div>
       </section>

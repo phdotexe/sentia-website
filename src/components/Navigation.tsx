@@ -1,94 +1,74 @@
 
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Github, MessageCircle } from "lucide-react";
+import { Github, MessageCircle, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const Navigation = () => {
   const location = useLocation();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <nav className="bg-white shadow-sm border-b sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-blue-600">
-              Sentia
-            </Link>
-          </div>
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 animate-fade-in">
+      <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-2xl px-6 py-3">
+        <div className="flex items-center space-x-8">
+          <Link 
+            to="/" 
+            className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transform transition-all duration-300"
+          >
+            Sentia
+          </Link>
           
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          <div className="flex items-center space-x-6">
+            {[
+              { path: '/', label: 'Home' },
+              { path: '/about', label: 'About' },
+              { path: '/docs', label: 'Docs' },
+              { path: '/tutorials', label: 'Tutorials' },
+              { path: '/qbanks', label: 'Free QBanks' },
+              { path: '/testimonials', label: 'Reviews' },
+              { path: '/donations', label: 'Donate' }
+            ].map((item) => (
               <Link
-                to="/"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                key={item.path}
+                to={item.path}
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 transform ${
+                  isActive(item.path) 
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg' 
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
                 }`}
               >
-                Home
+                {item.label}
               </Link>
-              <Link
-                to="/about"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/about') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                }`}
-              >
-                About
-              </Link>
-              <Link
-                to="/docs"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/docs') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                }`}
-              >
-                Documentation
-              </Link>
-              <Link
-                to="/tutorials"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/tutorials') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                }`}
-              >
-                Tutorials
-              </Link>
-              <Link
-                to="/testimonials"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/testimonials') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                }`}
-              >
-                Testimonials
-              </Link>
-              <Link
-                to="/donations"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('/donations') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                }`}
-              >
-                Donate
-              </Link>
-            </div>
+            ))}
           </div>
 
           <div className="flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="hover:scale-110 transform transition-all duration-300"
+            >
+              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </Button>
             <a
               href="https://github.com/your-username/sentia"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:scale-110 transform duration-300"
             >
               <Github className="h-5 w-5" />
             </a>
@@ -96,11 +76,16 @@ const Navigation = () => {
               href="https://discord.gg/your-invite"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:scale-110 transform duration-300"
             >
               <MessageCircle className="h-5 w-5" />
             </a>
-            <Button variant="outline" size="sm" asChild>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="hover:scale-105 transform transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0 hover:shadow-lg"
+              asChild
+            >
               <a href="https://apps.apple.com/app/sentia" target="_blank" rel="noopener noreferrer">
                 Download
               </a>
