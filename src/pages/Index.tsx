@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ import { useState, useEffect } from "react";
 const Index = () => {
   const [currentText, setCurrentText] = useState(0);
   const [showText, setShowText] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
 
   const heroTexts = [
     "Master Any Subject",
@@ -28,9 +30,18 @@ const Index = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
+    <div className="min-h-screen bg-gradient-to-b from-blue-900 via-purple-900 to-pink-900 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 relative overflow-hidden">
       <Navigation />
+      
+      {/* Animated gradient background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-pink-600/20 animate-pulse"></div>
       
       {/* Hero Section with Video Background */}
       <section className="relative pt-20 pb-20 px-4 min-h-screen overflow-hidden">
@@ -141,14 +152,27 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 px-4 bg-black/10 dark:bg-white/5 backdrop-blur-sm">
+      {/* Features Section with Scroll Animations */}
+      <section className="py-20 px-4 bg-gradient-to-b from-transparent via-black/20 to-black/30 backdrop-blur-sm relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-in">
+            <h2 
+              className="text-3xl md:text-4xl font-bold text-white mb-4 animate-fade-in"
+              style={{
+                transform: `translateY(${scrollY * 0.1}px) rotate(${scrollY * 0.05}deg)`,
+                transition: 'transform 0.1s ease-out'
+              }}
+            >
               Why Choose Sentia?
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p 
+              className="text-xl text-white/80 max-w-3xl mx-auto animate-fade-in"
+              style={{
+                transform: `translateX(${Math.sin(scrollY * 0.01) * 10}px)`,
+                transition: 'transform 0.1s ease-out',
+                animationDelay: '0.2s'
+              }}
+            >
               Designed for students, professionals, and lifelong learners who want to study more effectively
             </p>
           </div>
@@ -179,15 +203,25 @@ const Index = () => {
             ].map((feature, index) => (
               <Card 
                 key={index}
-                className="p-6 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm animate-fade-in"
-                style={{ animationDelay: feature.delay }}
+                className="p-6 text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm animate-fade-in border-white/20"
+                style={{ 
+                  animationDelay: feature.delay,
+                  transform: `translateY(${scrollY * 0.05 * (index + 1)}px) rotate(${Math.sin(scrollY * 0.01 + index) * 2}deg)`,
+                  transition: 'transform 0.1s ease-out'
+                }}
               >
                 <CardContent className="pt-6">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.color} rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300`}>
+                  <div 
+                    className={`w-12 h-12 bg-gradient-to-r ${feature.color} rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300`}
+                    style={{
+                      transform: `rotate(${scrollY * 0.1 + index * 30}deg)`,
+                      transition: 'transform 0.1s ease-out'
+                    }}
+                  >
                     <feature.icon className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">{feature.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300">
+                  <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
+                  <p className="text-white/70">
                     {feature.description}
                   </p>
                 </CardContent>
@@ -197,26 +231,44 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Platform Pricing */}
-      <section className="py-20 px-4 bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm">
+      {/* Platform Pricing with Scroll Animations */}
+      <section className="py-20 px-4 bg-gradient-to-b from-black/30 to-black/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-in">
+            <h2 
+              className="text-3xl md:text-4xl font-bold text-white mb-4 animate-fade-in"
+              style={{
+                transform: `scale(${1 + Math.sin(scrollY * 0.01) * 0.05}) rotate(${scrollY * 0.02}deg)`,
+                transition: 'transform 0.1s ease-out'
+              }}
+            >
               Available on Your Platform
             </h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="p-8 text-center hover:shadow-2xl transform hover:scale-105 transition-all duration-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm animate-fade-in">
+            <Card 
+              className="p-8 text-center hover:shadow-2xl transform hover:scale-105 transition-all duration-500 bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm animate-fade-in border-white/20"
+              style={{
+                transform: `translateX(${Math.sin(scrollY * 0.01) * 20}px) rotate(${Math.cos(scrollY * 0.01) * 2}deg)`,
+                transition: 'transform 0.1s ease-out'
+              }}
+            >
               <CardContent className="pt-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
+                <div 
+                  className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
+                  style={{
+                    transform: `rotate(${scrollY * 0.2}deg)`,
+                    transition: 'transform 0.1s ease-out'
+                  }}
+                >
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M3 12V6.75l9-5.25 9 5.25V12l-9 5.25L3 12z"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Windows</h3>
-                <div className="text-3xl font-bold text-green-500 mb-4">FREE</div>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <h3 className="text-2xl font-bold mb-2 text-white">Windows</h3>
+                <div className="text-3xl font-bold text-green-400 mb-4">FREE</div>
+                <p className="text-white/70 mb-6">
                   Full featured version available for download from GitHub
                 </p>
                 <Button className="w-full hover:scale-105 transform transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" asChild>
@@ -227,19 +279,32 @@ const Index = () => {
               </CardContent>
             </Card>
             
-            <Card className="p-8 text-center hover:shadow-2xl transform hover:scale-105 transition-all duration-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <Card 
+              className="p-8 text-center hover:shadow-2xl transform hover:scale-105 transition-all duration-500 bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm animate-fade-in border-white/20" 
+              style={{ 
+                animationDelay: '0.2s',
+                transform: `translateX(${Math.sin(scrollY * 0.01 + Math.PI) * 20}px) rotate(${Math.cos(scrollY * 0.01 + Math.PI) * 2}deg)`,
+                transition: 'transform 0.1s ease-out'
+              }}
+            >
               <CardContent className="pt-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-gray-600 to-gray-800 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300">
+                <div 
+                  className="w-16 h-16 bg-gradient-to-r from-gray-600 to-gray-800 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
+                  style={{
+                    transform: `rotate(${-scrollY * 0.2}deg)`,
+                    transition: 'transform 0.1s ease-out'
+                  }}
+                >
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.987 11.987s11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.232 20.116c-3.79-1.146-6.077-4.116-5.816-7.527l6.91 6.91c-.536.433-1.13.783-1.094.617z"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">macOS</h3>
-                <div className="text-3xl font-bold text-blue-600 mb-4">$9.99</div>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <h3 className="text-2xl font-bold mb-2 text-white">macOS</h3>
+                <div className="text-3xl font-bold text-blue-400 mb-4">$9.99</div>
+                <p className="text-white/70 mb-6">
                   Available on the Mac App Store with automatic updates
                 </p>
-                <Button className="w-full hover:scale-105 transform transition-all duration-300" variant="outline" asChild>
+                <Button className="w-full hover:scale-105 transform transition-all duration-300 border-white/30 text-white hover:bg-white/20" variant="outline" asChild>
                   <a href="https://apps.apple.com/app/sentia" target="_blank" rel="noopener noreferrer">
                     Get on App Store
                   </a>
