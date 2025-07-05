@@ -3,65 +3,11 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, Coffee, Server, Code, Users, Star } from "lucide-react";
+import { donationTiers, expenses } from "@/constants";
+
+const iconMap = { Heart, Coffee, Server, Code };
 
 const Donations = () => {
-  const donationTiers = [
-    {
-      icon: Coffee,
-      title: "Buy us a Coffee",
-      amount: "$5",
-      description: "Help fuel late-night coding sessions",
-      benefits: [
-        "Our eternal gratitude",
-        "Supporter badge in Discord",
-        "Knowledge that you're supporting education"
-      ]
-    },
-    {
-      icon: Heart,
-      title: "Support Development",
-      amount: "$25",
-      description: "Contribute to ongoing feature development",
-      benefits: [
-        "All Coffee tier benefits",
-        "Early access to beta features",
-        "Priority support in Discord",
-        "Your name in app credits"
-      ]
-    },
-    {
-      icon: Server,
-      title: "Infrastructure Supporter",
-      amount: "$50",
-      description: "Help us maintain servers and tools",
-      benefits: [
-        "All previous tier benefits",
-        "Monthly development updates",
-        "Vote on upcoming features",
-        "Direct line to the development team"
-      ]
-    },
-    {
-      icon: Code,
-      title: "Platinum Sponsor",
-      amount: "$100+",
-      description: "Become a major supporter of the project",
-      benefits: [
-        "All previous tier benefits",
-        "Logo placement on website",
-        "Quarterly video calls with dev team",
-        "Custom feature requests consideration"
-      ]
-    }
-  ];
-
-  const expenses = [
-    { category: "Development Tools", amount: "$200/month", description: "IDEs, testing tools, design software" },
-    { category: "Website Hosting", amount: "$50/month", description: "Web hosting, CDN, domain costs" },
-    { category: "Code Signing", amount: "$300/year", description: "Certificate for trusted app distribution" },
-    { category: "App Store Fees", amount: "$99/year", description: "Apple Developer Program membership" }
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -121,34 +67,37 @@ const Donations = () => {
               Choose Your Support Level
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {donationTiers.map((tier, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
-                  <CardHeader className="text-center">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                      <tier.icon className="h-6 w-6 text-blue-600" />
-                    </div>
-                    <CardTitle className="text-lg">{tier.title}</CardTitle>
-                    <div className="text-2xl font-bold text-blue-600">{tier.amount}</div>
-                    <p className="text-sm text-gray-600">{tier.description}</p>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2 mb-6">
-                      {tier.benefits.map((benefit, i) => (
-                        <li key={i} className="text-sm text-gray-600 flex items-start">
-                          <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 mr-2 flex-shrink-0"></div>
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
-                    <Button
-                      className="w-full"
-                      variant={index === 1 ? "default" : "outline"}
-                    >
-                      Donate {tier.amount}
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+              {donationTiers.map((tier, index) => {
+                const Icon = iconMap[tier.icon as keyof typeof iconMap];
+                return (
+                  <Card key={index} className="hover:shadow-lg transition-shadow">
+                    <CardHeader className="text-center">
+                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        {Icon && <Icon className="h-6 w-6 text-blue-600" />}
+                      </div>
+                      <CardTitle className="text-lg">{tier.title}</CardTitle>
+                      <div className="text-2xl font-bold text-blue-600">{tier.amount}</div>
+                      <p className="text-sm text-gray-600">{tier.description}</p>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2 mb-6">
+                        {tier.benefits.map((benefit, i) => (
+                          <li key={i} className="text-sm text-gray-600 flex items-start">
+                            <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 mr-2 flex-shrink-0"></div>
+                            {benefit}
+                          </li>
+                        ))}
+                      </ul>
+                      <Button
+                        className="w-full"
+                        variant={index === 1 ? "default" : "outline"}
+                      >
+                        Donate {tier.amount}
+                      </Button>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
 

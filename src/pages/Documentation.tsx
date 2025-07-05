@@ -6,62 +6,14 @@ import { Download, Settings, BookOpen, BarChart, ArrowDown, ArrowUp, ChevronRigh
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { tutorialSteps } from "@/constants";
+
+const iconMap = { Target, BookOpen, Zap };
 
 const Documentation = () => {
   // Interactive Tutorials logic
   const [currentStep, setCurrentStep] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
-
-  const tutorialSteps = [
-    {
-      id: 1,
-      title: "Welcome to Sentia",
-      content: "Get ready to revolutionize your learning experience with Sentia's powerful quiz bank system.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop",
-      icon: Target,
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      id: 2,
-      title: "Installation & Setup",
-      content: "Download and install Sentia on your device. The app runs completely offline for maximum privacy and speed.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop",
-      icon: BookOpen,
-      color: "from-green-500 to-emerald-500"
-    },
-    {
-      id: 3,
-      title: "Creating Your First Quiz Bank",
-      content: "Learn how to create your first quiz bank with custom questions, categories, and difficulty levels.",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=600&h=400&fit=crop",
-      icon: Zap,
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      id: 4,
-      title: "Mastering Spaced Repetition",
-      content: "Understand how Sentia's spaced repetition algorithm works to optimize your learning and retention.",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&h=400&fit=crop",
-      icon: Target,
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      id: 5,
-      title: "Advanced Features",
-      content: "Explore advanced features like analytics, custom scheduling, and importing external question banks.",
-      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=600&h=400&fit=crop",
-      icon: BookOpen,
-      color: "from-indigo-500 to-purple-500"
-    },
-    {
-      id: 6,
-      title: "Study Strategies",
-      content: "Learn proven study strategies and how to combine them with Sentia for maximum learning efficiency.",
-      image: "https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?w=600&h=400&fit=crop",
-      icon: Zap,
-      color: "from-teal-500 to-blue-500"
-    }
-  ];
 
   const nextStep = () => {
     if (currentStep < tutorialSteps.length - 1) {
@@ -107,6 +59,7 @@ const Documentation = () => {
   }, [currentStep]);
 
   const currentTutorial = tutorialSteps[currentStep];
+  const CurrentIcon = iconMap[currentTutorial.icon as keyof typeof iconMap];
 
   return (
     <div className="min-h-screen bg-white">
@@ -438,7 +391,7 @@ const Documentation = () => {
                         <div className={`absolute inset-0 bg-gradient-to-r ${currentTutorial.color} opacity-20`}></div>
                         <div className="absolute top-4 left-4">
                           <div className={`w-12 h-12 bg-gradient-to-r ${currentTutorial.color} rounded-xl flex items-center justify-center shadow-lg`}>
-                            <currentTutorial.icon className="h-6 w-6 text-white" />
+                            {CurrentIcon && <CurrentIcon className="h-6 w-6 text-white" />}
                           </div>
                         </div>
                       </div>

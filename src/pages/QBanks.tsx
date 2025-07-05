@@ -1,104 +1,15 @@
-
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Download, Star, Users, Search, Filter } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Download, Search, Star } from "lucide-react";
 import { useState } from "react";
+import { categories, qbanks } from "@/constants";
 
 const QBanks = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const categories = ["All", "Medicine", "Biology", "Chemistry", "Physics", "Math", "Computer Science", "History"];
-
-  const qbanks = [
-    {
-      id: 1,
-      title: "Medical Terminology Mastery",
-      description: "Comprehensive medical terminology quiz bank with 500+ questions",
-      category: "Medicine",
-      questions: 534,
-      rating: 4.8,
-      downloads: 12500,
-      size: "2.4 MB",
-      thumbnail: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=300&h=200&fit=crop",
-      author: "Dr. Sarah Chen",
-      difficulty: "Intermediate",
-      lastUpdated: "2024-01-15"
-    },
-    {
-      id: 2,
-      title: "Organic Chemistry Reactions",
-      description: "Master organic chemistry with detailed reaction mechanisms",
-      category: "Chemistry",
-      questions: 425,
-      rating: 4.9,
-      downloads: 8200,
-      size: "3.1 MB",
-      thumbnail: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=300&h=200&fit=crop",
-      author: "Prof. Michael Rodriguez",
-      difficulty: "Advanced",
-      lastUpdated: "2024-01-12"
-    },
-    {
-      id: 3,
-      title: "Python Programming Fundamentals",
-      description: "Learn Python basics with hands-on coding questions",
-      category: "Computer Science",
-      questions: 380,
-      rating: 4.7,
-      downloads: 15600,
-      size: "1.8 MB",
-      thumbnail: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=300&h=200&fit=crop",
-      author: "Alex Thompson",
-      difficulty: "Beginner",
-      lastUpdated: "2024-01-20"
-    },
-    {
-      id: 4,
-      title: "World History: Ancient Civilizations",
-      description: "Explore ancient civilizations from around the world",
-      category: "History",
-      questions: 290,
-      rating: 4.6,
-      downloads: 6800,
-      size: "2.2 MB",
-      thumbnail: "https://images.unsplash.com/photo-1471919743851-c4df8b6ee133?w=300&h=200&fit=crop",
-      author: "Dr. Jennifer Liu",
-      difficulty: "Intermediate",
-      lastUpdated: "2024-01-10"
-    },
-    {
-      id: 5,
-      title: "Calculus Problem Solving",
-      description: "Master calculus concepts with step-by-step solutions",
-      category: "Math",
-      questions: 456,
-      rating: 4.8,
-      downloads: 11200,
-      size: "2.8 MB",
-      thumbnail: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=300&h=200&fit=crop",
-      author: "Prof. David Kim",
-      difficulty: "Advanced",
-      lastUpdated: "2024-01-18"
-    },
-    {
-      id: 6,
-      title: "Cell Biology Essentials",
-      description: "Comprehensive study guide for cellular biology",
-      category: "Biology",
-      questions: 367,
-      rating: 4.7,
-      downloads: 9400,
-      size: "2.6 MB",
-      thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop",
-      author: "Dr. Emily Watson",
-      difficulty: "Intermediate",
-      lastUpdated: "2024-01-14"
-    }
-  ];
 
   const filteredQBanks = qbanks.filter(qbank => {
     const matchesSearch = qbank.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -207,76 +118,39 @@ const QBanks = () => {
           {/* QBank Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredQBanks.map((qbank, index) => (
-              <Card
-                key={qbank.id}
-                className="overflow-hidden hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm animate-fade-in"
-                style={{ animationDelay: `${0.8 + index * 0.1}s` }}
-              >
+              <Card key={index} className="overflow-hidden bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                 <div className="relative">
                   <img
                     src={qbank.thumbnail}
                     alt={qbank.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-40 object-cover"
                   />
-                  <div className="absolute top-4 right-4">
-                    <Badge className={getDifficultyColor(qbank.difficulty)}>
-                      {qbank.difficulty}
-                    </Badge>
+                  <div className="absolute top-4 left-4">
+                    <Badge className={getDifficultyColor(qbank.difficulty)}>{qbank.difficulty}</Badge>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-
-                <CardHeader className="pb-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge variant="outline" className="text-xs">
-                      {qbank.category}
-                    </Badge>
-                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                      <Star className="h-3 w-3 text-yellow-400 mr-1" />
-                      {qbank.rating}
-                    </div>
+                <div className="p-6 flex flex-col justify-between h-full">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{qbank.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{qbank.description}</p>
                   </div>
-                  <CardTitle className="text-lg text-gray-900 dark:text-white">
-                    {qbank.title}
-                  </CardTitle>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
-                    {qbank.description}
-                  </p>
-                </CardHeader>
-
-                <CardContent className="pt-0">
                   <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <span>{qbank.author}</span>
+                    <span>{qbank.lastUpdated}</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-4">
                     <span>{qbank.questions} questions</span>
                     <span>{qbank.size}</span>
                   </div>
-
-                  <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-4">
-                    <span>by {qbank.author}</span>
-                    <div className="flex items-center">
-                      <Users className="h-3 w-3 mr-1" />
-                      {qbank.downloads.toLocaleString()}
-                    </div>
+                  <div className="flex items-center">
+                    <Star className="h-4 w-4 text-yellow-400 mr-1" />
+                    <span className="font-semibold">{qbank.rating}/5</span>
+                    <span className="ml-4"><Download className="h-4 w-4 inline mr-1" />{qbank.downloads.toLocaleString()} downloads</span>
                   </div>
-
-                  <Button
-                    className="w-full hover:scale-105 transform transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0"
-                    size="sm"
-                  >
-                    <Download className="mr-2 h-4 w-4" />
-                    Download
-                  </Button>
-                </CardContent>
+                </div>
               </Card>
             ))}
           </div>
-
-          {filteredQBanks.length === 0 && (
-            <div className="text-center py-12 animate-fade-in">
-              <p className="text-gray-500 dark:text-gray-400 text-lg">
-                No quiz banks found matching your search criteria.
-              </p>
-            </div>
-          )}
         </div>
       </section>
 
