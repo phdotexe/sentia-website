@@ -65,15 +65,15 @@ const Donations = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      
-      <section className="py-20">
+
+      <section className="py-[150px]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Support Sentia's Development
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Sentia is built with love by a small team passionate about improving education. 
+              Sentia is built with love by a small team passionate about improving education.
               Your support helps us keep the app free, private, and constantly improving.
             </p>
           </div>
@@ -140,8 +140,8 @@ const Donations = () => {
                         </li>
                       ))}
                     </ul>
-                    <Button 
-                      className="w-full" 
+                    <Button
+                      className="w-full"
                       variant={index === 1 ? "default" : "outline"}
                     >
                       Donate {tier.amount}

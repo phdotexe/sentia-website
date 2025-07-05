@@ -119,15 +119,15 @@ const QBanks = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <Navigation />
-      
-      <section className="pt-32 pb-20 px-4">
+
+      <section className="pt-[150px] pb-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in">
               Free Quiz Banks
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Discover and download high-quality quiz banks created by educators and verified by Sentia. 
+              Discover and download high-quality quiz banks created by educators and verified by Sentia.
               All free to use with your Sentia app.
             </p>
           </div>
@@ -152,8 +152,8 @@ const QBanks = () => {
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
                   className={`hover:scale-105 transform transition-all duration-300 ${
-                    selectedCategory === category 
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0' 
+                    selectedCategory === category
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0'
                       : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm'
                   }`}
                 >
@@ -171,7 +171,7 @@ const QBanks = () => {
                   <Badge className="bg-white/20 text-white w-fit mb-4">Featured</Badge>
                   <h2 className="text-3xl font-bold mb-4">Medical Terminology Mastery</h2>
                   <p className="text-white/90 mb-6 text-lg">
-                    The most comprehensive medical terminology quiz bank with over 500 questions, 
+                    The most comprehensive medical terminology quiz bank with over 500 questions,
                     created by medical professionals and used by thousands of students worldwide.
                   </p>
                   <div className="flex items-center space-x-6 mb-6">
@@ -184,8 +184,8 @@ const QBanks = () => {
                       <span>12.5K downloads</span>
                     </div>
                   </div>
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="bg-white text-blue-600 hover:bg-gray-100 hover:scale-105 transform transition-all duration-300 w-fit"
                   >
                     <Download className="mr-2 h-5 w-5" />
@@ -193,7 +193,7 @@ const QBanks = () => {
                   </Button>
                 </div>
                 <div className="relative">
-                  <img 
+                  <img
                     src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop"
                     alt="Featured QBank"
                     className="w-full h-64 lg:h-full object-cover"
@@ -207,14 +207,14 @@ const QBanks = () => {
           {/* QBank Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredQBanks.map((qbank, index) => (
-              <Card 
-                key={qbank.id} 
+              <Card
+                key={qbank.id}
                 className="overflow-hidden hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm animate-fade-in"
                 style={{ animationDelay: `${0.8 + index * 0.1}s` }}
               >
                 <div className="relative">
-                  <img 
-                    src={qbank.thumbnail} 
+                  <img
+                    src={qbank.thumbnail}
                     alt={qbank.title}
                     className="w-full h-48 object-cover"
                   />
@@ -225,7 +225,7 @@ const QBanks = () => {
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-                
+
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="outline" className="text-xs">
@@ -243,13 +243,13 @@ const QBanks = () => {
                     {qbank.description}
                   </p>
                 </CardHeader>
-                
+
                 <CardContent className="pt-0">
                   <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
                     <span>{qbank.questions} questions</span>
                     <span>{qbank.size}</span>
                   </div>
-                  
+
                   <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-4">
                     <span>by {qbank.author}</span>
                     <div className="flex items-center">
@@ -257,8 +257,8 @@ const QBanks = () => {
                       {qbank.downloads.toLocaleString()}
                     </div>
                   </div>
-                  
-                  <Button 
+
+                  <Button
                     className="w-full hover:scale-105 transform transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0"
                     size="sm"
                   >
