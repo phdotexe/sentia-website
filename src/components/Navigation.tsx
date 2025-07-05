@@ -35,7 +35,6 @@ const Navigation = () => {
               { path: '/', label: 'Home' },
               { path: '/about', label: 'About' },
               { path: '/docs', label: 'Docs' },
-              { path: '/tutorials', label: 'Tutorials' },
               { path: '/qbanks', label: 'Free QBanks' },
               { path: '/testimonials', label: 'Reviews' },
               { path: '/donations', label: 'Donate' }

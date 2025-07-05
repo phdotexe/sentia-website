@@ -8,7 +8,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Documentation from "./pages/Documentation";
-import Tutorials from "./pages/Tutorials";
 import Testimonials from "./pages/Testimonials";
 import Donations from "./pages/Donations";
 import QBanks from "./pages/QBanks";
@@ -32,7 +31,6 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/docs" element={<Documentation />} />
-            <Route path="/tutorials" element={<Tutorials />} />
             <Route path="/qbanks" element={<QBanks />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/donations" element={<Donations />} />
