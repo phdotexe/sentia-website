@@ -8,8 +8,8 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      
-      <section className="py-20">
+
+      <section className="py-[150px]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -22,14 +22,14 @@ const About = () => {
 
           <div className="prose prose-lg mx-auto mb-16">
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Sentia was born from a simple observation: traditional study methods are inefficient. 
-              Students spend countless hours re-reading notes and highlighting textbooks, but research 
+              Sentia was born from a simple observation: traditional study methods are inefficient.
+              Students spend countless hours re-reading notes and highlighting textbooks, but research
               shows that active recall and spaced repetition are far more effective for long-term retention.
             </p>
-            
+
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Our mission is to make evidence-based learning accessible to everyone. Sentia combines 
-              the power of spaced repetition algorithms with an intuitive interface, creating a 
+              Our mission is to make evidence-based learning accessible to everyone. Sentia combines
+              the power of spaced repetition algorithms with an intuitive interface, creating a
               study tool that adapts to your learning pace and maximizes your retention.
             </p>
           </div>
@@ -46,7 +46,7 @@ const About = () => {
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6">
               <CardContent className="pt-6">
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
@@ -58,7 +58,7 @@ const About = () => {
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center p-6">
               <CardContent className="pt-6">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
