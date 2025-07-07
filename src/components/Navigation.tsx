@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Github, MessageCircle, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { navigationLinks } from "@/constants";
+
+const filteredLinks = navigationLinks.filter(link => link.label !== 'Reviews');
 
 const Navigation = () => {
   const location = useLocation();
@@ -31,15 +34,7 @@ const Navigation = () => {
           </Link>
 
           <div className="hidden lg:flex items-center space-x-6">
-            {[
-              { path: '/', label: 'Home' },
-              { path: '/about', label: 'About' },
-              { path: '/docs', label: 'Docs' },
-              { path: '/tutorials', label: 'Tutorials' },
-              { path: '/qbanks', label: 'Free QBanks' },
-              { path: '/testimonials', label: 'Reviews' },
-              { path: '/donations', label: 'Donate' }
-            ].map((item) => (
+            {filteredLinks.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
