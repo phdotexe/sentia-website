@@ -62,16 +62,16 @@ const Documentation = () => {
   const CurrentIcon = iconMap[currentTutorial.icon as keyof typeof iconMap];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <Navigation />
 
       <section className="py-[150px]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Documentation
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 dark:text-gray-300">
               Everything you need to know to get started with Sentia
             </p>
           </div>
@@ -87,9 +87,9 @@ const Documentation = () => {
 
             <TabsContent value="getting-started" className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Card>
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-gray-900 dark:text-white">
                       <Download className="mr-2 h-5 w-5" />
                       Installation
                     </CardTitle>
@@ -97,8 +97,8 @@ const Documentation = () => {
                   <CardContent>
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-semibold mb-2">Windows</h4>
-                        <ol className="list-decimal list-inside text-sm text-gray-600 space-y-1">
+                        <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">Windows</h4>
+                        <ol className="list-decimal list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
                           <li>Download the latest release from GitHub</li>
                           <li>Run the installer (.exe file)</li>
                           <li>Follow the installation wizard</li>
@@ -106,8 +106,8 @@ const Documentation = () => {
                         </ol>
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-2">macOS</h4>
-                        <ol className="list-decimal list-inside text-sm text-gray-600 space-y-1">
+                        <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">macOS</h4>
+                        <ol className="list-decimal list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
                           <li>Download from the Mac App Store</li>
                           <li>Click "Get" to install</li>
                           <li>Launch from Applications folder</li>
@@ -118,15 +118,15 @@ const Documentation = () => {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-gray-900 dark:text-white">
                       <BookOpen className="mr-2 h-5 w-5" />
                       First Steps
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ol className="list-decimal list-inside text-sm text-gray-600 space-y-2">
+                    <ol className="list-decimal list-inside text-sm text-gray-600 dark:text-gray-300 space-y-2">
                       <li>Create your first quiz bank</li>
                       <li>Import questions or create new ones</li>
                       <li>Set up your study schedule</li>
