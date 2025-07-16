@@ -10,8 +10,9 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 relative overflow-hidden">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50/80 to-indigo-100/80 dark:from-gray-800/80 dark:to-indigo-900/80 backdrop-blur-sm py-[150px]">
+      <main id="main-content">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-br from-blue-50/80 to-indigo-100/80 dark:from-gray-800/80 dark:to-indigo-900/80 backdrop-blur-sm py-[150px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -253,6 +254,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

@@ -3,7 +3,7 @@ import { Github, MessageCircle, Heart } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 text-gray-900 dark:text-white pt-16 pb-8 relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 text-gray-900 dark:text-white pt-16 pb-8 relative overflow-hidden" role="contentinfo" aria-label="Site footer">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute w-96 h-96 bg-blue-200 dark:bg-blue-700 opacity-20 rounded-full blur-3xl left-[-8rem] top-[-8rem]" />
         <div className="absolute w-72 h-72 bg-pink-200 dark:bg-fuchsia-700 opacity-20 rounded-full blur-2xl right-[-6rem] bottom-[-6rem]" />
@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between mb-12 gap-6 text-center lg:text-left">
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-0 drop-shadow">Ready to master your studies?</h3>
-          <a href="https://github.com/your-username/sentia/releases" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-fuchsia-500 text-white font-semibold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
+          <a href="https://github.com/your-username/sentia/releases" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-fuchsia-500 text-white font-semibold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 focus-visible:focus" aria-label="Download Sentia from GitHub (opens in new tab)">
             Download Sentia
           </a>
         </div>
@@ -82,7 +82,8 @@ const Footer = () => {
               href="https://github.com/your-username/sentia"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 transform hover:scale-125"
+              className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 transform hover:scale-125 focus-visible:focus"
+              aria-label="Visit Sentia on GitHub (opens in new tab)"
             >
               <Github className="h-7 w-7" />
             </a>
@@ -90,13 +91,15 @@ const Footer = () => {
               href="https://discord.gg/your-invite"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 transform hover:scale-125"
+              className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 transform hover:scale-125 focus-visible:focus"
+              aria-label="Join Sentia Discord community (opens in new tab)"
             >
               <MessageCircle className="h-7 w-7" />
             </a>
             <Link
               to="/donations"
-              className="text-gray-600 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 transition-all duration-200 transform hover:scale-125"
+              className="text-gray-600 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 transition-all duration-200 transform hover:scale-125 focus-visible:focus"
+              aria-label="Support Sentia with a donation"
             >
               <Heart className="h-7 w-7" />
             </Link>

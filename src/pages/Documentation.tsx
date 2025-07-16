@@ -65,7 +65,8 @@ const Documentation = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <Navigation />
 
-      <section className="py-[150px]">
+      <main id="main-content">
+        <section className="py-[150px]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
@@ -77,34 +78,53 @@ const Documentation = () => {
           </div>
 
           <Tabs defaultValue="getting-started" className="w-full">
-            <TabsList className="flex w-full overflow-x-auto scrollbar-hide bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-xl p-1">
-              <TabsTrigger
+            <TabsList
+              className="flex w-full overflow-x-auto scrollbar-hide bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-xl p-1"
+              role="tablist"
+              aria-label="Documentation sections"
+            >
+                            <TabsTrigger
                 value="getting-started"
-                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform focus-visible:focus"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-getting-started"
               >
                 Getting Started
               </TabsTrigger>
-              <TabsTrigger
+                            <TabsTrigger
                 value="features"
-                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform focus-visible:focus"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-features"
               >
                 Features
               </TabsTrigger>
               <TabsTrigger
                 value="advanced"
-                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform focus-visible:focus"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-advanced"
               >
                 Advanced Usage
               </TabsTrigger>
               <TabsTrigger
                 value="troubleshooting"
-                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform focus-visible:focus"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-troubleshooting"
               >
                 Troubleshooting
               </TabsTrigger>
               <TabsTrigger
                 value="interactive-tutorials"
-                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform focus-visible:focus"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-interactive-tutorials"
               >
                 Interactive Tutorials
               </TabsTrigger>
@@ -505,6 +525,7 @@ const Documentation = () => {
           </Tabs>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>
