@@ -77,12 +77,37 @@ const Documentation = () => {
           </div>
 
           <Tabs defaultValue="getting-started" className="w-full">
-            <TabsList className="grid w-full grid-cols-5">
-              <TabsTrigger value="getting-started">Getting Started</TabsTrigger>
-              <TabsTrigger value="features">Features</TabsTrigger>
-              <TabsTrigger value="advanced">Advanced Usage</TabsTrigger>
-              <TabsTrigger value="troubleshooting">Troubleshooting</TabsTrigger>
-              <TabsTrigger value="interactive-tutorials">Interactive Tutorials</TabsTrigger>
+            <TabsList className="flex w-full overflow-x-auto scrollbar-hide bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-xl p-1">
+              <TabsTrigger
+                value="getting-started"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform"
+              >
+                Getting Started
+              </TabsTrigger>
+              <TabsTrigger
+                value="features"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform"
+              >
+                Features
+              </TabsTrigger>
+              <TabsTrigger
+                value="advanced"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform"
+              >
+                Advanced Usage
+              </TabsTrigger>
+              <TabsTrigger
+                value="troubleshooting"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform"
+              >
+                Troubleshooting
+              </TabsTrigger>
+              <TabsTrigger
+                value="interactive-tutorials"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform"
+              >
+                Interactive Tutorials
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="getting-started" className="mt-8">
