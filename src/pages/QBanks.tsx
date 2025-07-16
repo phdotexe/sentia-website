@@ -31,7 +31,8 @@ const QBanks = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <Navigation />
 
-      <section className="pt-[150px] pb-20 px-4">
+      <main id="main-content">
+        <section className="pt-[150px] pb-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in">
@@ -153,6 +154,7 @@ const QBanks = () => {
           </div>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

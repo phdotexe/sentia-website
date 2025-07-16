@@ -62,34 +62,79 @@ const Documentation = () => {
   const CurrentIcon = iconMap[currentTutorial.icon as keyof typeof iconMap];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <Navigation />
 
-      <section className="py-[150px]">
+      <main id="main-content">
+        <section className="py-[150px]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Documentation
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 dark:text-gray-300">
               Everything you need to know to get started with Sentia
             </p>
           </div>
 
           <Tabs defaultValue="getting-started" className="w-full">
-            <TabsList className="grid w-full grid-cols-5">
-              <TabsTrigger value="getting-started">Getting Started</TabsTrigger>
-              <TabsTrigger value="features">Features</TabsTrigger>
-              <TabsTrigger value="advanced">Advanced Usage</TabsTrigger>
-              <TabsTrigger value="troubleshooting">Troubleshooting</TabsTrigger>
-              <TabsTrigger value="interactive-tutorials">Interactive Tutorials</TabsTrigger>
+            <TabsList
+              className="flex w-full overflow-x-auto scrollbar-hide bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-xl p-1"
+              role="tablist"
+              aria-label="Documentation sections"
+            >
+                            <TabsTrigger
+                value="getting-started"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform focus-visible:focus"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-getting-started"
+              >
+                Getting Started
+              </TabsTrigger>
+                            <TabsTrigger
+                value="features"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform focus-visible:focus"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-features"
+              >
+                Features
+              </TabsTrigger>
+              <TabsTrigger
+                value="advanced"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform focus-visible:focus"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-advanced"
+              >
+                Advanced Usage
+              </TabsTrigger>
+              <TabsTrigger
+                value="troubleshooting"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform focus-visible:focus"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-troubleshooting"
+              >
+                Troubleshooting
+              </TabsTrigger>
+              <TabsTrigger
+                value="interactive-tutorials"
+                className="flex-shrink-0 whitespace-nowrap px-6 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 transform focus-visible:focus"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-interactive-tutorials"
+              >
+                Interactive Tutorials
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="getting-started" className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Card>
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-gray-900 dark:text-white">
                       <Download className="mr-2 h-5 w-5" />
                       Installation
                     </CardTitle>
@@ -97,8 +142,8 @@ const Documentation = () => {
                   <CardContent>
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-semibold mb-2">Windows</h4>
-                        <ol className="list-decimal list-inside text-sm text-gray-600 space-y-1">
+                        <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">Windows</h4>
+                        <ol className="list-decimal list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
                           <li>Download the latest release from GitHub</li>
                           <li>Run the installer (.exe file)</li>
                           <li>Follow the installation wizard</li>
@@ -106,8 +151,8 @@ const Documentation = () => {
                         </ol>
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-2">macOS</h4>
-                        <ol className="list-decimal list-inside text-sm text-gray-600 space-y-1">
+                        <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">macOS</h4>
+                        <ol className="list-decimal list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
                           <li>Download from the Mac App Store</li>
                           <li>Click "Get" to install</li>
                           <li>Launch from Applications folder</li>
@@ -118,15 +163,15 @@ const Documentation = () => {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-gray-900 dark:text-white">
                       <BookOpen className="mr-2 h-5 w-5" />
                       First Steps
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ol className="list-decimal list-inside text-sm text-gray-600 space-y-2">
+                    <ol className="list-decimal list-inside text-sm text-gray-600 dark:text-gray-300 space-y-2">
                       <li>Create your first quiz bank</li>
                       <li>Import questions or create new ones</li>
                       <li>Set up your study schedule</li>
@@ -139,13 +184,13 @@ const Documentation = () => {
             </TabsContent>
 
             <TabsContent value="features" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle>Quiz Creation</CardTitle>
+                    <CardTitle className="text-gray-900 dark:text-white">Quiz Creation</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ul className="text-sm text-gray-600 space-y-2">
+                    <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-2">
                       <li>• Multiple choice questions</li>
                       <li>• True/false questions</li>
                       <li>• Fill-in-the-blank</li>
@@ -156,12 +201,12 @@ const Documentation = () => {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle>Study Modes</CardTitle>
+                    <CardTitle className="text-gray-900 dark:text-white">Study Modes</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ul className="text-sm text-gray-600 space-y-2">
+                    <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-2">
                       <li>• Spaced repetition</li>
                       <li>• Custom practice sessions</li>
                       <li>• Timed quizzes</li>
@@ -172,12 +217,12 @@ const Documentation = () => {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle>Analytics</CardTitle>
+                    <CardTitle className="text-gray-900 dark:text-white">Analytics</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ul className="text-sm text-gray-600 space-y-2">
+                    <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-2">
                       <li>• Progress tracking</li>
                       <li>• Performance statistics</li>
                       <li>• Study streak counters</li>
@@ -192,9 +237,9 @@ const Documentation = () => {
 
             <TabsContent value="advanced" className="mt-8">
               <div className="space-y-6">
-                <Card>
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-gray-900 dark:text-white">
                       <Settings className="mr-2 h-5 w-5" />
                       Advanced Configuration
                     </CardTitle>
@@ -202,8 +247,8 @@ const Documentation = () => {
                   <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-semibold mb-3">Spaced Repetition Settings</h4>
-                        <ul className="text-sm text-gray-600 space-y-1">
+                        <h4 className="font-semibold mb-3 text-gray-900 dark:text-white">Spaced Repetition Settings</h4>
+                        <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
                           <li>• Customize interval multipliers</li>
                           <li>• Adjust difficulty ratings</li>
                           <li>• Set minimum/maximum intervals</li>
@@ -211,8 +256,8 @@ const Documentation = () => {
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-3">Data Management</h4>
-                        <ul className="text-sm text-gray-600 space-y-1">
+                        <h4 className="font-semibold mb-3 text-gray-900 dark:text-white">Data Management</h4>
+                        <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
                           <li>• Backup and restore</li>
                           <li>• Export quiz banks</li>
                           <li>• Sync between devices</li>
@@ -223,51 +268,51 @@ const Documentation = () => {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle>Keyboard Shortcuts</CardTitle>
+                    <CardTitle className="text-gray-900 dark:text-white">Keyboard Shortcuts</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-semibold mb-3">Study Mode</h4>
+                        <h4 className="font-semibold mb-3 text-gray-900 dark:text-white">Study Mode</h4>
                         <div className="space-y-1 text-sm">
                           <div className="flex justify-between">
-                            <span>Show answer</span>
-                            <code className="bg-gray-100 px-2 py-1 rounded">Space</code>
+                            <span className="text-gray-600 dark:text-gray-300">Show answer</span>
+                            <code className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white px-2 py-1 rounded">Space</code>
                           </div>
                           <div className="flex justify-between">
-                            <span>Mark as easy</span>
-                            <code className="bg-gray-100 px-2 py-1 rounded">1</code>
+                            <span className="text-gray-600 dark:text-gray-300">Mark as easy</span>
+                            <code className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white px-2 py-1 rounded">1</code>
                           </div>
                           <div className="flex justify-between">
-                            <span>Mark as good</span>
-                            <code className="bg-gray-100 px-2 py-1 rounded">2</code>
+                            <span className="text-gray-600 dark:text-gray-300">Mark as good</span>
+                            <code className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white px-2 py-1 rounded">2</code>
                           </div>
                           <div className="flex justify-between">
-                            <span>Mark as hard</span>
-                            <code className="bg-gray-100 px-2 py-1 rounded">3</code>
+                            <span className="text-gray-600 dark:text-gray-300">Mark as hard</span>
+                            <code className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white px-2 py-1 rounded">3</code>
                           </div>
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-3">General</h4>
+                        <h4 className="font-semibold mb-3 text-gray-900 dark:text-white">General</h4>
                         <div className="space-y-1 text-sm">
                           <div className="flex justify-between">
-                            <span>New quiz bank</span>
-                            <code className="bg-gray-100 px-2 py-1 rounded">Ctrl+N</code>
+                            <span className="text-gray-600 dark:text-gray-300">New quiz bank</span>
+                            <code className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white px-2 py-1 rounded">Ctrl+N</code>
                           </div>
                           <div className="flex justify-between">
-                            <span>Start study session</span>
-                            <code className="bg-gray-100 px-2 py-1 rounded">Ctrl+S</code>
+                            <span className="text-gray-600 dark:text-gray-300">Start study session</span>
+                            <code className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white px-2 py-1 rounded">Ctrl+S</code>
                           </div>
                           <div className="flex justify-between">
-                            <span>Open settings</span>
-                            <code className="bg-gray-100 px-2 py-1 rounded">Ctrl+,</code>
+                            <span className="text-gray-600 dark:text-gray-300">Open settings</span>
+                            <code className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white px-2 py-1 rounded">Ctrl+,</code>
                           </div>
                           <div className="flex justify-between">
-                            <span>Exit application</span>
-                            <code className="bg-gray-100 px-2 py-1 rounded">Ctrl+Q</code>
+                            <span className="text-gray-600 dark:text-gray-300">Exit application</span>
+                            <code className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white px-2 py-1 rounded">Ctrl+Q</code>
                           </div>
                         </div>
                       </div>
@@ -279,15 +324,15 @@ const Documentation = () => {
 
             <TabsContent value="troubleshooting" className="mt-8">
               <div className="space-y-6">
-                <Card>
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle>Common Issues</CardTitle>
+                    <CardTitle className="text-gray-900 dark:text-white">Common Issues</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-6">
                       <div>
-                        <h4 className="font-semibold mb-2">App won't start</h4>
-                        <ul className="text-sm text-gray-600 space-y-1 ml-4">
+                        <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">App won't start</h4>
+                        <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1 ml-4">
                           <li>• Check if you have sufficient permissions</li>
                           <li>• Ensure your system meets minimum requirements</li>
                           <li>• Try running as administrator (Windows)</li>
@@ -296,8 +341,8 @@ const Documentation = () => {
                       </div>
 
                       <div>
-                        <h4 className="font-semibold mb-2">Data not saving</h4>
-                        <ul className="text-sm text-gray-600 space-y-1 ml-4">
+                        <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">Data not saving</h4>
+                        <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1 ml-4">
                           <li>• Verify disk space availability</li>
                           <li>• Check write permissions for app directory</li>
                           <li>• Disable read-only mode if enabled</li>
@@ -306,8 +351,8 @@ const Documentation = () => {
                       </div>
 
                       <div>
-                        <h4 className="font-semibold mb-2">Performance issues</h4>
-                        <ul className="text-sm text-gray-600 space-y-1 ml-4">
+                        <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">Performance issues</h4>
+                        <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1 ml-4">
                           <li>• Close other resource-intensive applications</li>
                           <li>• Check available RAM and storage</li>
                           <li>• Optimize database (Settings → Database → Optimize)</li>
@@ -318,16 +363,16 @@ const Documentation = () => {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle>Getting Help</CardTitle>
+                    <CardTitle className="text-gray-900 dark:text-white">Getting Help</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <p className="text-gray-600">
+                      <p className="text-gray-600 dark:text-gray-300">
                         If you're still experiencing issues, here are the best ways to get help:
                       </p>
-                      <ul className="text-sm text-gray-600 space-y-2">
+                      <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-2">
                         <li>• Join our Discord community for real-time support</li>
                         <li>• Check existing GitHub issues for similar problems</li>
                         <li>• Create a new GitHub issue with detailed information</li>
@@ -341,10 +386,10 @@ const Documentation = () => {
             <TabsContent value="interactive-tutorials" className="mt-8">
               <div className="min-h-[60vh]">
                 <div className="text-center mb-12">
-                  <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-black mb-6 animate-fade-in">
+                  <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in">
                     Interactive Tutorials
                   </h2>
-                  <p className="text-xl text-gray-600 dark:text-gray-600 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                  <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
                     Master Sentia with our step-by-step interactive guide. Use arrow keys or buttons to navigate.
                   </p>
                 </div>
@@ -480,6 +525,7 @@ const Documentation = () => {
           </Tabs>
         </div>
       </section>
+      </main>
 
       <Footer />
     </div>

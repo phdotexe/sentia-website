@@ -25,7 +25,23 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+                <BrowserRouter>
+          {/* Skip links for accessibility */}
+          <a href="#main-content" className="sr-only focus:not-sr-only">
+            Skip to main content
+          </a>
+          <a href="#navigation" className="sr-only focus:not-sr-only">
+            Skip to navigation
+          </a>
+
+          {/* Live regions for screen readers */}
+          <div aria-live="polite" aria-atomic="true" className="sr-only">
+            <div id="page-title"></div>
+          </div>
+          <div aria-live="assertive" aria-atomic="true" className="sr-only">
+            <div id="notifications"></div>
+          </div>
+
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
