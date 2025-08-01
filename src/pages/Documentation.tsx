@@ -126,7 +126,7 @@ const Documentation = () => {
                 aria-selected="false"
                 aria-controls="panel-interactive-tutorials"
               >
-                Interactive Tutorials
+                Tiktok? Tutorials
               </TabsTrigger>
             </TabsList>
 
