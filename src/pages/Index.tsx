@@ -239,17 +239,12 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-center">
             <Quote className="h-12 w-12 text-gray-300 mx-auto mb-6" />
             <p className="text-2xl text-gray-700 font-light italic mb-8 leading-relaxed">
-              "Sentia completely transformed my study routine. The spaced repetition algorithm helped me retain complex medical terminology like never before."
+              "Sentia gets me in the headspace to study efficiently"
             </p>
             <div className="flex items-center justify-center">
-              <img
-                src="https://images.unsplash.com/photo-1494790108755-2616b612b5b5?w=150&h=150&fit=crop&crop=face"
-                alt="Sarah Chen"
-                className="w-16 h-16 rounded-full object-cover mr-4"
-              />
               <div className="text-left">
-                <h3 className="font-semibold text-gray-900">Sarah Chen</h3>
-                <p className="text-gray-600">Medical Student, Johns Hopkins</p>
+                <h3 className="font-semibold text-gray-900">Paul</h3>
+                <p className="text-gray-600">Student</p>
               </div>
             </div>
           </div>
