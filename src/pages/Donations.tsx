@@ -167,18 +167,18 @@ const Donations = () => {
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
                     Help improve Sentia by contributing to our open-source project
                   </p>
-                  <Button variant="outline" size="sm" asChild>
+                  {/* <Button variant="outline" size="sm" asChild>
                     <a href="https://github.com/your-username/sentia" target="_blank" rel="noopener noreferrer">
                       View on GitHub
                     </a>
-                  </Button>
+                  </Button> */}
                 </CardContent>
               </Card>
             </div>
           </div>
 
           {/* Transparency Section */}
-          <div className="mb-20">
+          {/* <div className="mb-20">
             <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-center text-gray-900 dark:text-white">How We Use Your Donations</CardTitle>
@@ -216,7 +216,7 @@ const Donations = () => {
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </div> */}
 
           {/* Payment Methods */}
           <div className="text-center">

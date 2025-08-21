@@ -54,7 +54,7 @@ const Navigation = () => {
 
           {/* Desktop Right Side */}
           <div className="hidden lg:flex items-center space-x-4">
-            <a
+            {/* <a
               href="https://github.com/your-username/sentia"
               target="_blank"
               rel="noopener noreferrer"
@@ -71,7 +71,7 @@ const Navigation = () => {
               aria-label="Join Sentia Discord community (opens in new tab)"
             >
               <MessageCircle className="h-6 w-6" />
-            </a>
+            </a> */}
             <Button
               variant="outline"
               size="sm"
@@ -135,7 +135,7 @@ const Navigation = () => {
               ))}
 
               {/* Social Links */}
-              <div className="flex items-center space-x-4 pt-2">
+              {/* <div className="flex items-center space-x-4 pt-2">
                 <a
                   href="https://github.com/your-username/sentia"
                   target="_blank"
@@ -152,7 +152,7 @@ const Navigation = () => {
                 >
                   <MessageCircle className="h-6 w-6" />
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         )}

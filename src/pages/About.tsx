@@ -35,7 +35,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <Card className="text-center p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
               <CardContent className="pt-6">
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-lg flex items-center justify-center mx-auto mb-4">
@@ -71,7 +71,7 @@ const About = () => {
                 </p>
               </CardContent>
             </Card>
-          </div>
+          </div> */}
 
           <div className="bg-blue-50/80 dark:bg-blue-900/20 backdrop-blur-sm rounded-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Why Privacy Matters</h2>

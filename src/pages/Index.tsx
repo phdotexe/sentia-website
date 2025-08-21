@@ -89,75 +89,42 @@ const Index = () => {
       <main id="main-content">
         {/* Hero Section */}
         <section className="bg-white py-[150px]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="p-8">
-              <h1 className="text-6xl md:text-5xl font-bold text-gray-900 mb-6">
-                Download <span className="text-[#525]">Sentia</span>
-              </h1>
-              <p className="text-lg text-gray-600 mb-8">
-                The ultimate quiz bank app that runs locally on your computer. Study efficiently with spaced repetition, custom quizzes, and powerful analytics.
-              </p>
-              <div className="flex flex-col gap-4 mb-8">
-                <div>
-                  {userOS === 'windows' && (
-                    <Button size="lg" className="bg-[#313] hover:bg-[#525]/80" asChild>
-                      <a href="/sentia-windows.exe" download="sentia-windows.exe">
-                        <Download className="mr-2 h-6 w-6" />
-                        Download for Windows
-                      </a>
-                    </Button>
-                  )}
-                  {userOS === 'mac' && (
-                    <Button size="lg" className="bg-black hover:bg-black/80" asChild>
-                      <a href="/sentia-mac.dmg" download="sentia-mac.dmg">
-                        <Download className="mr-2 h-6 w-6" />
-                        Download for Mac
-                      </a>
-                    </Button>
-                  )}
-                  {userOS === 'linux' && (
-                    <Button size="lg" className="bg-black hover:bg-black/80" asChild>
-                      <a href="/sentia-linux.AppImage" download="sentia-linux.AppImage">
-                        <Download className="mr-2 h-6 w-6" />
-                        Download for Linux
-                      </a>
-                    </Button>
-                  )}
-                </div>
-                <div className="space-y-3">
-                  <p className="text-sm text-gray-500">
-                    {userOS === 'windows' && (
-                      <>Also available for <a href="/sentia-mac.dmg" download className="text-[#313] hover:underline">Mac</a> and <a href="/sentia-linux.AppImage" download className="text-[#313] hover:underline">Linux</a></>
-                    )}
-                    {userOS === 'mac' && (
-                      <>Also available for <a href="/sentia-windows.exe" download className="text-[#313] hover:underline">Windows</a> and <a href="/sentia-linux.AppImage" download className="text-[#313] hover:underline">Linux</a></>
-                    )}
-                    {userOS === 'linux' && (
-                      <>Also available for <a href="/sentia-windows.exe" download className="text-[#313] hover:underline">Windows</a> and <a href="/sentia-mac.dmg" download className="text-[#313] hover:underline">Mac</a></>
-                    )}
-                  </p>
-                  <a href="/about" className="text-[#313] hover:text-[#313]/80 text-sm flex items-center gap-1 px-3 py-2 rounded-lg">
-                    Learn about Sentia
-                    <span>→</span>
-                  </a>
-                </div>
-              </div>              
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-6xl md:text-5xl font-bold text-gray-900 mb-6">
+            Download <span className="text-[#525]">Sentia</span>
+          </h1>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            The ultimate quiz bank app that runs locally on your computer. Study efficiently with spaced repetition, custom quizzes, and powerful analytics.
+          </p>
+          <div className="flex flex-col items-center gap-4 mb-8">
+            <div>
+              {userOS === 'windows' && (
+                <Button size="lg" className="bg-gray-400 text-gray-600 cursor-not-allowed" disabled>
+                  <Download className="mr-2 h-6 w-6" />
+                  Coming Soon - Windows
+                </Button>
+              )}
+              {userOS === 'mac' && (
+                <Button size="lg" className="bg-gray-400 text-gray-600 cursor-not-allowed" disabled>
+                  <Download className="mr-2 h-6 w-6" />
+                  Coming Soon - Mac
+                </Button>
+              )}
+              {userOS === 'linux' && (
+                <Button size="lg" className="bg-gray-400 text-gray-600 cursor-not-allowed" disabled>
+                  <Download className="mr-2 h-6 w-6" />
+                  Coming Soon - Linux
+                </Button>
+              )}
             </div>
-
-            {/* Promotional Video Section */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden">
-              <div className="aspect-video bg-gray-100 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-[#344959] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <p className="text-gray-600">Watch Sentia in Action</p>
-                  <p className="text-sm text-gray-400 mt-2">Promotional video coming soon</p>
-                </div>
-              </div>
+            <div className="space-y-3">
+              <p className="text-sm text-gray-500">
+                Sentia will be available for Windows, Mac, and Linux
+              </p>
+              <a href="/about" className="text-[#313] hover:text-[#313]/80 text-sm inline-flex items-center gap-1 px-3 py-2 rounded-lg">
+                Learn about Sentia
+                <span>→</span>
+              </a>
             </div>
           </div>
         </div>
@@ -169,7 +136,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="text-center text-white">
-            <h2 className="text-5xl font-bold mb-4">Practice makes perfect</h2>
+            <h2 className="text-5xl font-bold mb-4">Take control of your exam prep</h2>
             <p className="text-xl max-w-2xl mx-auto">Practice quizzes. See analytics. Get better</p>
           </div>
         </div>
@@ -211,7 +178,7 @@ const Index = () => {
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-gray-900">Get Question Banks</h3>
                   <p className="text-gray-600">
-                    Browse our <a href="/free-qbanks" className="text-[#313] hover:underline">free question banks</a> or find more on our <a href="https://discord.gg/sentia" target="_blank" rel="noopener noreferrer" className="text-[#313] hover:underline">Discord community</a>
+                    Browse our free question banks or find more on our <a href="https://discord.gg/sentia" target="_blank" rel="noopener noreferrer" className="text-[#313] hover:underline">Discord community</a>
                   </p>
                 </CardContent>
               </Card>
@@ -256,141 +223,39 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      {/* <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2
-              className="text-3xl md:text-4xl font-bold  mb-4 animate-fade-in"
-              style={{
-                transform: `translateY(${scrollY * 0.1}px) rotate(${scrollY * 0.05}deg)`,
-                transition: 'transform 0.1s ease-out'
-              }}
-            >
-              Why Choose Sentia?
-            </h2>
-            <p
-              className="text-xl max-w-3xl mx-auto animate-fade-in"
-              style={{
-                transform: `translateX(${Math.sin(scrollY * 0.01) * 10}px)`,
-                transition: 'transform 0.1s ease-out',
-                animationDelay: '0.2s'
-              }}
-            >
-              Designed for students, professionals, and lifelong learners who want to study more effectively
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Zap className="h-6 w-6 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">Lightning Fast</h3>
-                <p className="text-gray-600">
-                  Runs locally on your computer for instant access and blazing fast performance
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="h-6 w-6 text-green-600 dark:text-green-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Smart Learning</h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Advanced spaced repetition algorithms to optimize your learning and retention
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-6 w-6 text-purple-600 dark:text-purple-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Privacy Focused</h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Your data stays on your device. No cloud storage required, complete privacy guaranteed
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section> */}
-
       {/* Testimonials Section */}
-      <section className="py-20 bg-white/80 backdrop-blur-sm">
+      <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               What Our Users Say
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Discover how students, professionals, and educators are transforming
-              their learning with Sentia's innovative quiz bank technology.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See how Sentia is helping students and professionals achieve their learning goals
             </p>
           </div>
 
-          {/* Stats Section */}
-          <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                  {hasAnimated ? (
-                    index === 0 ? counters[index] + '%' :
-                    index === 1 ? counters[index] + '+' :
-                    index === 2 ? (counters[index] / 10).toFixed(1) + '/5' :
-                    index === 3 ? counters[index] + 'M+' :
-                    counters[index]
-                  ) : (
-                    index === 2 ? '0.0/5' : '0'
-                  )}
-                </div>
-                <div className="text-gray-600 dark:text-gray-400 text-sm">
-                  {stat.label}
-                </div>
+          {/* Single Testimonial */}
+          <div className="max-w-4xl mx-auto text-center">
+            <Quote className="h-12 w-12 text-gray-300 mx-auto mb-6" />
+            <p className="text-2xl text-gray-700 font-light italic mb-8 leading-relaxed">
+              "Sentia completely transformed my study routine. The spaced repetition algorithm helped me retain complex medical terminology like never before."
+            </p>
+            <div className="flex items-center justify-center">
+              <img
+                src="https://images.unsplash.com/photo-1494790108755-2616b612b5b5?w=150&h=150&fit=crop&crop=face"
+                alt="Sarah Chen"
+                className="w-16 h-16 rounded-full object-cover mr-4"
+              />
+              <div className="text-left">
+                <h3 className="font-semibold text-gray-900">Sarah Chen</h3>
+                <p className="text-gray-600">Medical Student, Johns Hopkins</p>
               </div>
-            ))}
-          </div>
-
-          {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.slice(0, 3).map((testimonial, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-                <CardContent className="pt-6">
-                  <div className="flex items-center mb-4">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover mr-4"
-                    />
-                    <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.role}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-500">
-                        {testimonial.university || testimonial.company}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <div className="relative">
-                    <Quote className="absolute top-0 left-0 h-6 w-6 text-blue-200 dark:text-blue-300 -mt-2 -ml-1" />
-                    <p className="text-gray-600 dark:text-gray-300 italic pl-5">
-                      {testimonial.content}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+            </div>
           </div>
         </div>
       </section>
+ 
       </main>
 
       <Footer />

@@ -2,8 +2,8 @@
 export const navigationLinks = [
   { path: '/', label: 'Home' },
   { path: '/about', label: 'About' },
-  { path: '/docs', label: 'Docs' },
-  { path: '/qbanks', label: 'Free QBanks' },
+  // { path: '/docs', label: 'Docs' },
+  // { path: '/qbanks', label: 'Free QBanks' },
   { path: '/testimonials', label: 'Reviews' },
   { path: '/donations', label: 'Donate' }
 ];
